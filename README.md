@@ -148,7 +148,7 @@ services:
       - NODE_ENV=homolog
       - PORT=3001
       - SECRET_SESSION={Segredo da sessão (usado em autenticação)}
-      - DB_URI=srv_postgres {endereço do banco de dados, aqui pode ser o nome da imagem}
+      - DB_URI=postgres {endereço do banco de dados, aqui pode ser o nome do serviço}
       - DB_USER={Usuário do banco que a aplicação irá usar}
       - DB_PASSWORD={Senha do banco de dados}
       - DB_DATABASE= {Database da aplicação}
