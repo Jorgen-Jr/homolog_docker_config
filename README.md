@@ -1,6 +1,6 @@
 # Configurando Um Ambiente de Testes Simples com Docker
 
-> Usando distros baseadas no Ubuntu 18.04 (No meu caso, ElementaryOS)
+> Usando distros baseadas no Ubuntu (No meu caso, ElementaryOS)
 
 ## Instalando o Docker
 ### Usando o Repositório Official do Docker
