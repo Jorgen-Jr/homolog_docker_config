@@ -17,7 +17,7 @@ $ sudo apt-get install \
     software-properties-common
  ```
   
-<image 1>
+![Passo - 01](https://github.com/Jorgen-Jr/homolog_docker_config/blob/master/screenshots/01.png)
 
 E em seguida adcionar a chave GPG official do Docker.
 
@@ -25,7 +25,7 @@ E em seguida adcionar a chave GPG official do Docker.
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 ```
 
-<image 2>
+![Passo - 02](https://github.com/Jorgen-Jr/homolog_docker_config/blob/master/screenshots/02.png)
 
 Você pode verificar se a chave foi adcionada pelo fingerprint `9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88`, buscando pelos últimos 8 characteres. O resultado deve ser como a seguir:
 
@@ -39,7 +39,7 @@ sub   rsa4096 2017-02-22 [S]
 
 ```
 
-<image 3>
+![Passo - 03](https://github.com/Jorgen-Jr/homolog_docker_config/blob/master/screenshots/03.png)
 
 Agora podemos adcionar o repositório dos lançamentos estáveis do Docker Engine. Através do comando:
 ```shell
@@ -51,19 +51,19 @@ sudo add-apt-repository \
 
 > Note que no caso do ElementaryOS eu precisei trocar a subfunção `$(lsb_release-cs)` que retorna a sua distribuição linux para `bionic`.
 
-<image 5>
+![Passo - 04](https://github.com/Jorgen-Jr/homolog_docker_config/blob/master/screenshots/04.png)
 
 Com o repositório instalado, atualize seu apt-get através do comando `sudo apt-get update` e instale o Docker Engine através do comando `sudo apt-get install docker-ce docker-ce-cli containerd.io`
 
-<image 6>
+![Passo - 05](https://github.com/Jorgen-Jr/homolog_docker_config/blob/master/screenshots/05.png)
 
 Você pode verificar que o docker está instalado através do comando `docker -vv`.
 
-<image 7>
+![Passo - 06](https://github.com/Jorgen-Jr/homolog_docker_config/blob/master/screenshots/06.png)
 
 Ou executando o comando `docker run hello-world` que deve baixar a imagem de teste e quando executa-la mostrar a seguinte mensagem.
 
-<image 8>
+![Passo - 07](https://github.com/Jorgen-Jr/homolog_docker_config/blob/master/screenshots/07.png)
 
 ### Compose
 
@@ -76,7 +76,7 @@ para baixar o docker-compose e
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 para torna-lo executável.
-<image 10>
+![Passo - 08](https://github.com/Jorgen-Jr/homolog_docker_config/blob/master/screenshots/09.png)
 
 ## Configurando o Ambiente através do YAML
 Por padrão o docker já vem com docker-compose, que permite o uso de scripts yaml, onde ditaremos as imagens e as propriedades de que ela deve rodar.<break>
@@ -161,15 +161,15 @@ volumes:
 ```
 
 Meu arquivo final ficou assim, mas você pode altera-lo conforme sua necessidade.
-<image 9>
+![Passo - 08](https://github.com/Jorgen-Jr/homolog_docker_config/blob/master/screenshots/08.png)
 
 ### Iniciando o ambiente de testes com Docker Compose.
 Para iniciar o ambiente de testes, basta ir até a pasta onde está o arquivo `docker-compose.yml` e executar o comando `sudo docker-compose up` ele irá baixar as imagens dos containers necessárias e iniciar os serviços criando as pastas aonde definimos.
-<image 11>
-<image 12>
+![Passo - 09](https://github.com/Jorgen-Jr/homolog_docker_config/blob/master/screenshots/10.png)
+![Passo - 10](https://github.com/Jorgen-Jr/homolog_docker_config/blob/master/screenshots/11.png)
 
 Agora basta copiar o código da nossa aplicação para as pastas criadas e reiniciar nosso ambiente rodando ele no fundo usando o comando `sudo docker-compose up -d`.
-<image 13>
+![Passo - 11](https://github.com/Jorgen-Jr/homolog_docker_config/blob/master/screenshots/12.png)
 
 E voilla, tá pronto o sorvetinho. já podemos acessar a aplicação localmente.
 
@@ -178,9 +178,9 @@ Se você preferir usar uma interface para gerenciar seus containers, recomendo u
 
 ### Importando
 Como já possuimos um arquivo docker-composee.yml basta criar um novo projeto no Dockstation usando ele.
-<image 14>
-<image 15>
-<image 16>
+![Passo - 12](https://github.com/Jorgen-Jr/homolog_docker_config/blob/master/screenshots/13.png)
+![Passo - 13](https://github.com/Jorgen-Jr/homolog_docker_config/blob/master/screenshots/14.png)
+![Passo - 13](https://github.com/Jorgen-Jr/homolog_docker_config/blob/master/screenshots/15.png)
 O Dockstation facilita o gerenciamento, te dando acesso aos logs, propriedades e várias informações sobre o projeto e os containers, alem de dispor um editor para modificar o código do compose.
 > Note que você vai precisar remover os container criados anteriormente para poder usar os nomes usados em `container_name` no nosso arquivo compose.
 
@@ -190,11 +190,11 @@ Uma configuração adcional é necessária para usar o react-router do reactjs n
 ```shell
 $ sudo docker exec -it srv_nginx /bin/bash
 ```
-<image 17>
+![Passo - 14](https://github.com/Jorgen-Jr/homolog_docker_config/blob/master/screenshots/16.png)
 Em seguida instale um editor de sua preferencia, eu usarei o nano.
 O arquivo que vamos modificar é o `default.conf` localizado em `/etc/nginx/config.d/default.conf` então irei usar o comando ` nano /etc/nginx/conf.d/default.conf` para edita-lo.
 Adcione `try_files $uri $uri/ /index.html;` dentro do escopo `location / {` como a seguir:
-<image 18>
+![Passo - 15](https://github.com/Jorgen-Jr/homolog_docker_config/blob/master/screenshots/17.png)
 Salve o arquivo e saia do container e o reinicie com `sudo docker container restart srv_nginx`. Isso deve resolver os problemas com react-router onde acabamos com uma página 404.
 
 ### Erro 403 Nginx
