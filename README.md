@@ -80,7 +80,7 @@ para torna-lo executável.
 ![Passo - 08](https://github.com/Jorgen-Jr/homolog_docker_config/blob/master/screenshots/09.png)
 
 ## Configurando o Ambiente através do YAML
-Por padrão o docker já vem com docker-compose, que permite o uso de scripts yaml, onde ditaremos as imagens e as propriedades de que ela deve rodar.<break>
+O docker-compose permite o uso de scripts yaml, onde ditaremos as imagens e as propriedades de que ela deve rodar.<break>
 Irei criar uma pasta chamada `ambiente_de_testes` e dentro dela irei criar um arquivo `docker-compose.yml` para criarmos nosso ambiente.<break>
 Nosso ambiente irá usar NodeJs, Postgres e Nginx, então de inicio podemos adcionar ao arquivo as seguintes propriedades.
 
