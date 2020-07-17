@@ -6,7 +6,8 @@
 ### Usando o Repositório Official do Docker
 Para configurar o repositório, você precisa atualizar o `apt` e instalar os seguintes pacotes: <break>
 ```shell
-$ sudo apt-get update```
+$ sudo apt-get update
+```
 
 ```shell
 $ sudo apt-get install \
