@@ -186,7 +186,7 @@ O Dockstation facilita o gerenciamento, te dando acesso aos logs, propriedades e
 > Note que você vai precisar remover os container criados anteriormente para poder usar os nomes usados em `container_name` no nosso arquivo compose.
 
 ## Extra Bits
-### React-Router
+### React-Router Método 1
 Uma configuração adcional é necessária para usar o react-router do reactjs no nginx. Para fazer isso através do docker, vamos entrar no container através do terminal usando o seguinte comando.
 ```shell
 $ sudo docker exec -it srv_nginx /bin/bash
@@ -197,6 +197,15 @@ O arquivo que vamos modificar é o `default.conf` localizado em `/etc/nginx/conf
 Adcione `try_files $uri $uri/ /index.html;` dentro do escopo `location / {` como a seguir:
 ![Passo - 15](https://github.com/Jorgen-Jr/homolog_docker_config/blob/master/screenshots/17.png)
 Salve o arquivo e saia do container e o reinicie com `sudo docker container restart srv_nginx`. Isso deve resolver os problemas com react-router onde acabamos com uma página 404.
+
+### React-Router Método 2
+Alternativamente, você pode salvar o arquivo conf em uma pasta separada no nosso projeto adcionando aos volumes do nginx a seguinte linha.
+
+```python
+$ - '/home/jorge-n/ambiente_de_testes/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+```
+
+Assim poderá editar o arquivo direto na pasta do projeto adcionando a linha `try_files $uri $uri/ /index.html;` dentro do escopo `location / {` como mostrado no método 1:
 
 ### Erro 403 Nginx
 Este erro usualmente é causado por falta de permissão aos arquivos na pasta que definimos. para resolver isso, vá até a pasta do projeto e execute o comando `sudo chmod 777 -R ./` para dar permissão de leitura, escrita e execução para todos o proprietário, grupo e todos os outros usuários. 
