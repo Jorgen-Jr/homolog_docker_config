@@ -202,7 +202,7 @@ Salve o arquivo e saia do container e o reinicie com `sudo docker container rest
 Alternativamente, você pode salvar o arquivo conf em uma pasta separada no nosso projeto adcionando aos volumes do nginx a seguinte linha.
 
 ```python
-$ - '/home/jorge-n/ambiente_de_testes/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+    - '/home/jorge-n/ambiente_de_testes/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
 ```
 
 Assim poderá editar o arquivo direto na pasta do projeto adcionando a linha `try_files $uri $uri/ /index.html;` dentro do escopo `location / {` como mostrado no método 1:
